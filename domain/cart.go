@@ -32,7 +32,7 @@ type ShoppingCart interface {
 	Items() []Item
 }
 
-func addItem(cart ShoppingCart, item Item) ShoppingCart {
+func AddItem(cart ShoppingCart, item Item) ShoppingCart {
 	switch v := cart.(type) {
 	case *EmptyCart:
 		return &ActiveCart{
@@ -49,7 +49,7 @@ func addItem(cart ShoppingCart, item Item) ShoppingCart {
 	return cart
 }
 
-func makePayment(cart ShoppingCart, payment float64) ShoppingCart {
+func MakePayment(cart ShoppingCart, payment float64) ShoppingCart {
 	switch v := cart.(type) {
 	case *EmptyCart:
 	case *ActiveCart:
