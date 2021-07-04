@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+
+	"github.com/smith-30/go-dmmf/domain"
+)
 
 func main() {
-	fmt.Printf("%#v\n", "hello")
+	c := domain.NewCustomer("test___@gmail.com")
+	bss, _ := json.MarshalIndent(c, "", "	")
+	fmt.Printf("%v\n", string(bss))
 }
