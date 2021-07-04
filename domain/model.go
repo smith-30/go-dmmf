@@ -27,7 +27,6 @@ func (a EmailAddress) Validate() error {
 }
 
 type CustomerEmail interface {
-	Verified() bool
 	String() EmailAddress
 }
 
@@ -38,15 +37,20 @@ func NewUnverifiedEmail(v EmailAddress) CustomerEmail {
 	return &_v
 }
 
-func (a *UnverifiedEmail) Verified() bool {
-	return false
-}
-
 func (a *UnverifiedEmail) String() EmailAddress {
 	return EmailAddress(*a)
 }
 
 type VerifiedEmail EmailAddress
+
+func NewVerifiedEmail(v EmailAddress) CustomerEmail {
+	_v := VerifiedEmail(v)
+	return &_v
+}
+
+func (a *VerifiedEmail) String() EmailAddress {
+	return EmailAddress(*a)
+}
 
 type Customer struct {
 	Email CustomerEmail
